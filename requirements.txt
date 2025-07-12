@@ -9,3 +9,4 @@ tqdm
 platformdirs
 python-dotenv
 python-multipart
+httpx
