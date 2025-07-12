@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+tensorflow
+pillow
+numpy
+kaggle
+tqdm
+platformdirs
+python-dotenv
+python-multipart
