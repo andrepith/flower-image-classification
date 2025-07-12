@@ -2,3 +2,9 @@ venv
 *.pkl
 __pycahes__
 __pycache__
+.env
+*.h5
+.cache/
+*.zip
+*.csv
+data/
