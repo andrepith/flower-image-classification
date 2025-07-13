@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 import io
 import requests
 
@@ -22,8 +22,21 @@ def predict_flower(file: bytes) -> dict:
 
 def predict_from_url(url: str) -> dict:
     response = requests.get(url, timeout=10)
+
+    # ✅ Check if URL returned successfully
     response.raise_for_status()
-    image = Image.open(io.BytesIO(response.content))
+
+    # ✅ Validate content-type header
+    content_type = response.headers.get("Content-Type", "")
+    if not content_type.startswith("image/"):
+        raise ValueError(f"URL does not point to a valid image (got Content-Type: {content_type})")
+
+    # ✅ Try to open as image (final sanity check)
+    try:
+        image = Image.open(io.BytesIO(response.content))
+    except UnidentifiedImageError:
+        raise ValueError("The URL content is not a valid image.")
+
     image_array = preprocess_image(image)
     return _predict_from_array(image_array)
 
