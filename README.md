@@ -18,14 +18,23 @@ A FastAPI-based ML service to classify flower images using a CNN model trained o
 
 ### 1. Clone the project
 
-```bash
+```
 git clone https://github.com/your-username/ml_fastapi_project.git
 cd ml_fastapi_project
+```
 
+### 2. Create and activate a virtual environment
+
+```
 python -m venv venv
 source venv/bin/activate  # or .\venv\Scripts\activate on Windows
+```
 
+### 3. Install dependencies
+
+```
 pip install -r requirements.txt
+```
 
 🔐 Kaggle Credentials Setup
 
@@ -37,17 +46,23 @@ pip install -r requirements.txt
 
 Linux / macOS:
 
+```
 export KAGGLE_USERNAME=your_username
 export KAGGLE_KEY=your_key
+```
 
 Windows (CMD):
 
+```
 set KAGGLE_USERNAME=your_username
 set KAGGLE_KEY=your_key
+```
 
 🧠 Train the Model (Optional)
 
+```
 python scripts/train_image_model.py
+
 
 This will:
 
@@ -59,25 +74,37 @@ This will:
 
     Save model to app/models/flower_cnn_model.h5
 
+```
+
 🔌 Run the API Server
 
+```
 uvicorn app.main:app --reload
 
 Visit the docs at: http://127.0.0.1:8000/docs
+```
+
 📤 Predict from File
 
+```
 POST /api/predict-image-file
 Content-Type: multipart/form-data
+```
+
 Swagger UI:
 
 Try uploading a .jpg or .png image directly.
 Example curl:
 
+```
 curl -X POST "http://127.0.0.1:8000/api/predict-image-file" \
   -F "file=@sample.jpg"
 
+```
+
 🌐 Predict from Image URL
 
+```
 POST /api/predict-image-url
 Content-Type: application/json
 Body:
@@ -85,16 +112,20 @@ Body:
 {
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Sunflower_sky_backdrop.jpg/800px-Sunflower_sky_backdrop.jpg"
 }
+```
 
 ✅ Response
 
+```
 {
   "class_": "sunflower",
   "confidence": 0.9746
 }
+```
 
 🧪 Classes
 
+```
 The model was trained on the following flower types:
 
     daisy
@@ -106,9 +137,11 @@ The model was trained on the following flower types:
     sunflower
 
     tulip
+```
 
 📦 Dependencies
 
+```
     FastAPI
 
     TensorFlow / Keras
@@ -122,19 +155,26 @@ The model was trained on the following flower types:
     tqdm
 
     Kaggle API
+```
 
 Install all with:
 
+```
 pip install -r requirements.txt
+```
 
 📝 License
 
+```
 MIT License. Free to use and modify for your ML/AI projects.
+```
+
 👨‍💻 Author
 
+```
 Andre Adikara
 Built with ❤️ for practical ML API learning
-
+```
 
 ---
 
